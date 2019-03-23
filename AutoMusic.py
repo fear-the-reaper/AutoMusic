@@ -5,15 +5,20 @@ import speech_recognition as sr
 
 keyboard = Controller()
 # Methods(Start)
+# Making the Virtual key code for my pause/play,fast,and backplay buttons from their keycodes so that they
+# can be pressed and released
 def virtualCode(code):
 	kc = KeyCode()
 	vc = kc.from_vk(code)
 	return vc
 
+# Pressing and releasing the buttons
 def pressButton(code):
 	keyboard.press(virtualCode(code))
 	keyboard.release(virtualCode(code))
 
+
+# Taking Voice Input from the user
 def usrInput():
 	recog = sr.Recognizer()
 	with sr.Microphone() as source:
@@ -22,8 +27,9 @@ def usrInput():
 		return text_of_audio
 		# return recog.recognize_google(recog.listen(source))
 # Method(End)
+#Main Program
 def main():
-	#Main Program  
+	#Storing the keycodes of the buttons  
 	keycodes = {
 		"playPause" : 179,
 		"forward" : 176,
